@@ -212,6 +212,20 @@ const ProjectCard = ({
 );
 
 export default function Home() {
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const showToast = (message: string) => {
+    setToastMessage(message);
+    setTimeout(() => setToastMessage(null), 3000);
+  };
+
+  const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    const email = 'minhqle279@gmail.com';
+    navigator.clipboard.writeText(email);
+    showToast(`Email copied to clipboard: ${email}`);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -236,6 +250,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <a
               href="mailto:minhqle279@gmail.com"
+              onClick={handleEmailClick}
               className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-accent transition-colors"
             >
               Get In Touch
@@ -251,7 +266,7 @@ export default function Home() {
           </div>
           
           <div className="flex justify-center space-x-6 text-muted-foreground">
-            <a href="mailto:minhqle279@gmail.com" className="hover:text-primary transition-colors">
+            <a href="mailto:minhqle279@gmail.com" onClick={handleEmailClick} className="hover:text-primary transition-colors">
               <span className="sr-only">Email</span>
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z"/>
@@ -266,7 +281,7 @@ export default function Home() {
             <a href="https://github.com/minhle27" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
               <span className="sr-only">GitHub</span>
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 10.99.682-.637 1.17-1.511 1.17-2.496v-.744c-.476.103-.954.103-1.431 0v.744c0 .985-.488 1.859-1.17 2.496 4.46-1.573 7.618-5.911 7.618-10.99C24.005 5.367 18.637.001 12.017.001zM8.948 19.494c-.261-.175-.487-.393-.675-.651.188.258.414.476.675.651zm2.325-.823c-.559-.187-1.089-.456-1.572-.798.483.342 1.013.611 1.572.798z"/>
+                <path d="M12 1C5.923 1 1 5.923 1 12c0 4.867 3.149 8.979 7.521 10.436.55.096.756-.233.756-.522 0-.262-.013-1.128-.013-2.049-2.764.509-3.479-.674-3.699-1.292-.124-.317-.66-1.293-1.127-1.554-.385-.207-.936-.715-.014-.729.866-.014 1.485.797 1.691 1.128.99 1.663 2.571 1.196 3.204.907.096-.715.385-1.196.701-1.471-2.448-.275-5.005-1.224-5.005-5.432 0-1.196.426-2.186 1.128-2.956-.111-.275-.496-1.402.11-2.915 0 0 .921-.288 3.024 1.128a10.193 10.193 0 0 1 2.75-.371c.936 0 1.871.123 2.75.371 2.104-1.43 3.025-1.128 3.025-1.128.605 1.513.221 2.64.111 2.915.701.77 1.127 1.747 1.127 2.956 0 4.222-2.571 5.157-5.019 5.432.399.344.743 1.004.743 2.035 0 1.471-.014 2.654-.014 3.025 0 .289.206.632.756.522C19.851 20.979 23 16.854 23 12c0-6.077-4.922-11-11-11Z"/>
               </svg>
             </a>
           </div>
@@ -453,6 +468,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <a
               href="mailto:minhqle279@gmail.com"
+              onClick={handleEmailClick}
               className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-accent transition-colors"
             >
               <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
@@ -498,6 +514,11 @@ export default function Home() {
           </p>
         </div>
       </footer>
+      {toastMessage && (
+        <div className="fixed bottom-5 left-1/2 -translate-x-1/2 bg-foreground text-background px-4 py-2 rounded shadow">
+          {toastMessage}
+        </div>
+      )}
     </div>
   );
 }
