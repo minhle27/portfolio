@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from "next/image";
 
 // Navigation Component
 const Navigation = () => {
@@ -222,7 +221,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8">
             <h1 className="text-4xl sm:text-6xl font-bold text-foreground mb-6">
-              Hi, I'm <span className="text-primary">Minh Le</span>
+              Hi, I&apos;m <span className="text-primary">Minh Le</span>
             </h1>
             <p className="text-xl sm:text-2xl text-muted-foreground mb-8">
               Computer Science Student & Software Engineer
@@ -446,9 +445,9 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8">Let's Connect</h2>
+          <h2 className="text-3xl font-bold mb-8">Let&apos;s Connect</h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            I'm always interested in discussing new opportunities, innovative projects, 
+            I&apos;m always interested in discussing new opportunities, innovative projects, 
             or just connecting with fellow developers and tech enthusiasts.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
