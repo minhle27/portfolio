@@ -124,7 +124,9 @@ export const resumeData = {
   ],
 };
 
-export const siteMetadata = {
+import type { Metadata } from "next";
+
+export const siteMetadata: Metadata = {
   title: `${resumeData.personal.name} - Software Engineer`,
   description: resumeData.personal.bio,
   keywords: [
@@ -146,4 +148,4 @@ export const siteMetadata = {
     type: 'website',
     locale: 'en_US',
   },
-} as const;
+};
